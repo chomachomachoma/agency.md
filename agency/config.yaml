@@ -1,0 +1,25 @@
+# Default roles enabled on every /agency invocation
+# Remove a role or set `enabled: false` to exclude it from the default team
+default_roles:
+  strategist: true
+  ux_architect: true
+  visual_designer: true
+  frontend_developer: true
+  backend_developer: true
+  qa_engineer: true
+  devops_engineer: true
+  project_manager: true
+
+# Primary leads for the discovery phase
+discovery_leads:
+  primary: strategist
+  secondary: project_manager
+
+# Whether to ask the user for additional roles each time
+ask_for_additional_roles: true
+
+# Whether to display the full agency splash screen
+show_splash: true
+
+# Templates directory (relative to .agency/ or absolute)
+templates_dir: .agency/templates/

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "agency.md",
+  "version": "1.0.0",
+  "description": "An assortment of specialized agent roles inspired by a high-level design and development agency. Invoke with /agency to assemble a team of expert agents — strategists, designers, developers, and more — who collaborate on your task from discovery through delivery.",
+  "author": {
+    "name": "Chris Choma",
+    "url": "https://github.com/chomachomachoma"
+  },
+  "skills": [
+    "./"
+  ]
+}
