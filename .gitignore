@@ -1,4 +1,2 @@
-# Stale files from previous development iteration
-/agency/
-SKILL.md
-/install.sh
+# Node modules (if any)
+node_modules/
