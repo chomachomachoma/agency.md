@@ -1,0 +1,4 @@
+# Stale files from previous development iteration
+/agency/
+SKILL.md
+/install.sh
