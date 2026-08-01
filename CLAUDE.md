@@ -5,26 +5,31 @@
 ```
 agency.md/
 ├── .claude-plugin/
-│   └── plugin.json           # Plugin manifest for Claude Code
-├── SKILL.md                   # Main skill (auto-loaded by Claude Code)
-├── README.md                  # GitHub-facing docs
-├── CLAUDE.md                  # This file
-├── agency/
-│   ├── config.yaml            # Default configuration
-│   ├── agents/                # Subagent role definitions
-│   │   ├── strategist.md
-│   │   ├── ux-architect.md
-│   │   ├── visual-designer.md
-│   │   ├── frontend-developer.md
-│   │   ├── backend-developer.md
-│   │   ├── qa-engineer.md
-│   │   ├── devops-engineer.md
-│   │   └── project-manager.md
-│   ├── commands/
-│   │   └── agency.md          # The /agency slash command
-│   └── templates/
-│       ├── brief-template.md  # Discovery brief template
-│       └── plan-template.md   # Project plan template
+│   └── plugin.json            # Plugin manifest for Claude Code
+├── README.md                   # GitHub-facing docs and quick start
+├── INSTALL.md                  # Installation instructions
+├── CLAUDE.md                   # This file
+├── agents/
+│   ├── project-manager.md      # PM agent - orchestrator
+│   ├── designer.md             # Designer agent
+│   ├── developer.md            # Developer agent
+│   ├── copywriter.md           # Copywriter agent
+│   ├── marketing-director.md   # Marketing Director agent
+│   ├── devops.md               # DevOps agent
+│   └── qa.md                   # QA agent
+├── skills/
+│   ├── agency/
+│   │   └── SKILL.md            # /agency slash command
+│   ├── hire/
+│   │   └── SKILL.md            # /hire slash command
+│   └── fire/
+│       └── SKILL.md            # /fire slash command
+├── templates/
+│   ├── agency.config.md        # Default role configuration template
+│   └── custom-role-template.md # Template for creating custom roles
+├── prompts/                    # Reserved for future phase templates
+└── scripts/
+    └── install.sh              # Installation script
 ```
 
 ## Build & Test
@@ -36,19 +41,32 @@ claude plugin validate .
 
 ### Install locally for testing
 ```bash
-cp -r . ~/.claude/skills/agency.md
-claude plugin enable agency.md@skills-dir
+./scripts/install.sh
+# Or manually:
+# cp -r . ~/.claude/skills/agency.md
+# claude plugin enable agency.md@skills-dir
 ```
 
 ### Test the slash command
 ```bash
 # Start Claude Code and run:
 /agency help
+/hire test-role
+/fire test-role
 ```
 
 ## Standards
 
 - All agent definitions use YAML frontmatter with name, description, model, and tools
-- Agent tool access should be restricted to what they need (strategist needs web access, developers don't)
+- Agent tool access should be restricted to what they need
 - Markdown files should be readable as standalone docs
-- Templates should be comprehensive but leave room for the AI to fill in details
+- Slash commands use `argument-hint` and `allowed-tools` frontmatter for /help integration
+
+## Key Concepts
+
+- **Agency Splash**: a stylized banner showing assigned roles
+- **Discovery**: PM-led Q&A to gather requirements
+- **Planning**: agent coordination to produce a unified plan
+- **Approval**: user reviews and approves the plan
+- **Execution**: approved work dispatched in parallel
+- **Custom Roles**: users can /hire and /fire their own agents
